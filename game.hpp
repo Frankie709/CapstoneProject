@@ -1,0 +1,118 @@
+#ifndef GAME_HPP
+#define GAME_HPP
+#include "bag.hpp"
+#include "room.hpp"
+#include "farm.hpp"
+#include "caves.hpp"
+#include "castle.hpp"
+#include "desert.hpp"
+#include "forest.hpp"
+#include "river.hpp"
+#include "mountains.hpp"
+#include "town1.hpp"
+#include "town2.hpp"
+#include "hero.hpp"
+#include "minion.hpp"
+#include "demon.hpp"
+#include "valley.hpp"
+#include "home.hpp"
+#include "character.hpp"
+#include "room.hpp"
+#include "foyer.hpp"
+#include "dungeon.hpp"
+#include "lab.hpp"
+#include "bedroom.hpp"
+#include "dininghall.hpp"
+#include "terrace.hpp"
+#include "tower.hpp"
+#include "parser.hpp"
+#include "textFormatter.hpp"
+#include "item.hpp"
+#include "map.hpp"
+#include "filesystem.hpp"
+#include "interaction.hpp"
+#include <iostream>
+#include <fstream>
+#include <stdlib.h>
+#include <cstdio>
+class Game
+{
+	protected:
+		std::string userInput;
+		std::string output1;
+		std::string output2;
+		std::string output3;
+		Room* home;
+		Room* currentRoom;
+		Room* caves;
+        Room* castle;
+		Room* desert;
+		Room* forest;
+		Room* river;
+		Room* mountains;
+		Room* town1;
+        Room* town2;
+		Room* valley;
+		Room* diningHall;
+		Room* tower;
+		Room* terrace;
+		Room* bedroom;
+		Room* dungeon;
+		Room* foyer;
+		Room* lab;
+        Room* farm;
+        Room* roomArray[18]; 
+		Character* hero;
+        Character* demon;
+        Character* minion1;
+        Character* minion2;
+        Character* minion3;
+        Character* minion4;
+        Character* minion5;
+        Item* ring;
+        Item* sword;
+		Item* book;
+		Item* mushrooms;
+		Item* goggles;
+        Item* token;
+        Item* oar;
+        Item* jerky;
+        Item* heart;
+        Item* ale;
+        Item* water;
+        Item* stone;
+        Item* chemicals;
+        Item* screw;
+        Item* brokenSword;
+        Item* pyxis;
+        Item* masterSword;
+        Item* powerStone;
+        Item* poweredPyxis;
+        Item* translatedText;
+        Item* itemArray[20];
+		Parser* parser;
+        TextFormatter* text;
+        Map *map;
+        FileSystem* fs;
+        Interaction* story;
+        bool displayRoomDesc;
+        bool play;
+        int flash;
+        bool skipTransition;
+	public: 
+		Game();
+		~Game();
+        void heroCommands(std::string command, Room*& curRoom, Character* h);
+		void createCharacters();
+		void setupRooms();
+		void deleteRooms();
+        void setupItems();
+        void deleteCharacters();
+        void deleteItems();
+		bool setUp();
+		void run();
+		bool gameLoop(Room*&);
+		void linkRooms();
+        void reloadGame();
+};
+#endif
